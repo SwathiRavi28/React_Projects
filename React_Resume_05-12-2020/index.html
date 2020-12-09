@@ -1,0 +1,282 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="resume" id="root">
+
+    </div>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+
+        const ProfileImage = () => {
+            return (
+                <div>
+                    <img src="./swa.jpg" alt="Sample Image" />
+                </div>
+            )
+        }
+        const Name = () => {
+            return (
+
+                <div class="text-center">
+                    <p class="bold">Swathi R</p> </div>
+
+            )
+        }
+        const Role = () => {
+            return (
+
+                <p class="bold" id="designation">Technical Support Specialist</p>
+
+            )
+        }
+
+        const About = () => {
+            return (
+                <div class="resume_item">
+
+                    <div class="text-center">
+                        <p class="bold">About</p>
+                        <p class="semi-bold">Application Developer with 1 year of experience with banking domain,
+                        specialized in Automation Process Control, Daily Result Reporting (Daily
+                    Job Reports, SLA adherence, Schedule adherence), to Test completed jobs. Trained in. Net.</p></div>
+                </div>
+            )
+        }
+        const Personal = () => {
+            return (
+                <div class="resume_item resume_info">
+
+                    <ul>
+                        <li>
+                            <div class="icon">
+                                <i class="fas fa-map-signs"></i>
+                            </div>
+                            <div class="data">
+                                204, Valacheri,Thiruvarur, INDIA
+             </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="data">
+                                9902658634
+             </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="data">
+                                suuwathiravi1997@gmail.com
+             </div>
+                        </li>
+
+                    </ul>
+                </div>)
+        }
+        const Skills = () => {
+            return (
+
+                <div class="resume_item resume_skills">
+                    <div class="title">
+                        <p class="bold">Skill's</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="skill_name" id="file1">
+                                HTML
+                                <progress style={{ marginLeft: "50px" }} id="file1" value="90" max="100"> 90% </progress>
+                            </div>
+
+
+
+                        </li>
+                        <li>
+                            <div class="skill_name" id="file2">
+                                CSS
+                                <progress style={{ marginLeft: "57px" }} id="file2" value="90" max="100"> 90% </progress>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="skill_name" id="file3">
+                                JS
+                                <progress style={{ marginLeft: "68px" }} id="file3" value="85" max="100"> 85% </progress>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="skill_name" id="file4">
+                                Node JS
+                                <progress style={{ marginLeft: "30px" }} id="file4" value="70" max="100"> 70% </progress>
+                            </div>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+            )
+        }
+        const Experience = () => {
+            return (
+
+                <div class="resume_item resume_work">
+                    <div class="title">
+                        <p class="bold">Work Experience</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="semi-bold">2019-Present</div>
+                        </li>
+                        <li>
+                            <div class="info">
+                                <p class="semi-bold">IBM</p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>)
+        }
+        const Education = () => {
+            return (
+                <div class="resume_item resume_education">
+                    <div class="title">
+                        <p class="bold">Education</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="semi-bold">2014 - 2018</div>
+                        </li>
+                        <li>
+                            <div class="info">
+                                <p class="semi-bold">B.Tech - IT</p></div>
+                        </li>
+                        <li>
+                            <p class="semi-bold">University College of Engineering , Trichy</p>
+
+                        </li>
+
+                    </ul>
+                </div>)
+        }
+        const Social = () => {
+            return (
+                <div class="resume_item resume_social">
+                    <div class="title">
+                        <p class="bold">Social</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="data">
+                                <p class="semi-bold">Swathir@linkedin</p>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class=" fab fa-github"></i>
+                            </div>
+                            <div class="data">
+                                <p class="semi-bold">/SwathiRavi28</p>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="data">
+                                <p class="semi-bold">Suuwathiswa</p>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            )
+        }
+        const Hobby = () => {
+            return (
+                <div class="resume_item resume_hobby" style={{ borderBottom: "red !important" }}>
+                    <div class="title">
+                        <p class="bold">Hobby</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="icon">
+                                <i class="fas fa-photo-video"></i>
+                            </div>
+                            <div class="data">
+                                <p class="semi-bold">Movies</p>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="data">
+                                <p class="semi-bold">Music</p>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="icon">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div class="data">
+                                <p class="semi-bold">Surfing</p>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            )
+        }
+        const App = () => {
+            return (
+                <div className="resume">
+                    <ProfileImage />
+                    <Name />
+                    <Role />
+                    <Personal />
+                    <About />
+                    <Skills />
+                    <Experience />
+                    <Education />
+                    <Social />
+                    <Hobby />
+                </div>
+
+            )
+        }
+
+
+        ReactDOM.render(<App />, rootElement)
+
+    </script>
+</body>
+
+</html>
