@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css">
+<style>
+    form {
+        display: flex;
+        padding: 10px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .wrapper {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"%3E%3Cpath fill="%239C92AC" fill-opacity="0.4" d="M1 3h1v1H1V3zm2-2h1v1H3V1z"%3E%3C/path%3E%3C/svg%3E');
+    }
+
+    .input {
+        margin-right: 10px;
+    }
+
+    .frame {
+        width: 40vw;
+        max-width: 400px;
+    }
+
+    .header {
+        display: inline;
+        text-align: center;
+    }
+
+    .list-wrapper {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+</style>
+<link rel="import" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css">
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class App extends React.Component {
+            state = {
+                tasks: ['task 1', 'task 2', 'task 3'],
+                value: ''
+            };
+
+            handleSubmit = task => {
+                this.setState({ tasks: [...this.state.tasks, task] });
+            }
+
+            handleDelete = (index) => {
+                const newArr = [...this.state.tasks];
+                newArr.splice(index, 1);
+                this.setState({ tasks: newArr });
+            }
+
+            setUpdate = (id, event) => {
+
+                const todos = this.state.tasks
+
+                const modified_todo = todos.map((todo, index) => {
+                    if (index == id) {
+                        todo = event.target.value
+                    }
+                    return todo;
+                })
+
+                this.setState({ tasks: modified_todo })
+            }
+
+            render() {
+                return (
+                    <div className='wrapper'>
+                        <div className='card frame'>
+                            <Header numTodos={this.state.tasks.length} />
+                            <TodoList tasks={this.state.tasks} onDelete={this.handleDelete} updateValue={this.setUpdate} />
+                            <SubmitForm onFormSubmit={this.handleSubmit} />
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+
+        class SubmitForm extends React.Component {
+            state = { term: '' };
+
+            handleSubmit = (e) => {
+                e.preventDefault();
+                if (this.state.term === '') return;
+                this.props.onFormSubmit(this.state.term);
+                this.setState({ term: '' });
+            }
+
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            type='text'
+                            className='input'
+                            placeholder='Enter Item'
+                            value={this.state.term}
+                            onChange={(e) => this.setState({ term: e.target.value })}
+                        />
+                        <button className='button'>Submit</button>
+                    </form>
+                );
+            }
+        }
+
+
+        const Header = (props) => {
+            return (
+                <div className='card-header'>
+                    <h1 className='card-header-title header'>
+                        You have {props.numTodos} Todos
+        </h1>
+                </div>
+            )
+        }
+
+
+        const TodoList = (props) => {
+            const todos = props.tasks.map((todo, index) => {
+                return <Todo content={todo} key={index} id={index} onDelete={props.onDelete} updateValue={props.updateValue} />
+            })
+            return (
+                <div className='list-wrapper'>
+                    {todos}
+                </div>
+            );
+        }
+
+        const Todo = (props) => {
+
+            return (
+                <div className='list-item'>
+                    <p>
+                        <input style={{ border: 'none' }} value={props.content} onChange={(e) => props.updateValue(props.id, e)}
+                        />
+                        <button class="delete is-pulled-right" onClick={() => { props.onDelete(props.id) }}></button>
+                    </p>
+                </div>
+            );
+        }
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#root')
+        );
+       // ReactDOM.render(<Hello />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>
